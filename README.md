@@ -1,14 +1,37 @@
 # 🎫 AI-006 Smart Ticket Router
 
-Un enrutador inteligente de tickets de soporte técnico con enfoque Enterprise, desarrollado con **FastAPI**, **Azure OpenAI** y **Docker**.
+> Intelligent Enterprise Support Ticket Routing API powered by **FastAPI**, **Azure OpenAI**, **Docker** and **Azure Container Apps**.
 
-La API funciona como el primer nivel de atención al cliente. Recibe quejas o solicitudes de soporte, analiza el sentimiento del mensaje mediante Inteligencia Artificial, clasifica automáticamente el tipo de incidencia, asigna una prioridad utilizando reglas de negocio y genera una respuesta profesional estructurada para agilizar el proceso de atención.
+## 📖 Descripción
+
+AI-006 Smart Ticket Router es una API REST que funciona como el primer nivel de atención al cliente.
+
+La aplicación recibe el texto de una solicitud o queja, utiliza **Azure OpenAI** para analizar el contenido y posteriormente aplica reglas de negocio para generar una respuesta estructurada que incluye:
+
+- Análisis de sentimiento.
+- Clasificación automática del ticket.
+- Priorización del caso.
+- Equipo responsable recomendado.
+- Tiempo estimado de atención (SLA).
+- Respuesta profesional sugerida.
+
+Este proyecto fue desarrollado como parte de mi portafolio de **Azure AI** utilizando una arquitectura moderna basada en contenedores y desplegada completamente en Microsoft Azure.
 
 ---
 
-# 🚀 Arquitectura del Sistema
+# 🌐 Demo en Producción
 
-El proyecto combina Inteligencia Artificial Generativa con reglas de negocio tradicionales para reducir alucinaciones, mejorar la consistencia de las respuestas y garantizar un correcto escalamiento de los tickets.
+### Swagger UI
+
+https://aca-smart-ticket-router.lemontree-8658bace.southcentralus.azurecontainerapps.io/docs
+
+### OpenAPI
+
+https://aca-smart-ticket-router.lemontree-8658bace.southcentralus.azurecontainerapps.io/openapi.json
+
+---
+
+# 🚀 Arquitectura
 
 ```text
 Cliente
@@ -23,7 +46,7 @@ Validación (Pydantic)
 Azure OpenAI
    │
    ▼
-Reglas de Negocio
+Business Rules Engine
    │
    ▼
 Respuesta JSON
@@ -31,34 +54,48 @@ Respuesta JSON
 
 ---
 
-# 🛠️ Tecnologías Utilizadas
+# 🛠 Tecnologías Utilizadas
 
-- Python 3.10+
+## Backend
+
+- Python 3.10
 - FastAPI
 - Pydantic
-- Azure OpenAI (GPT)
+
+## Inteligencia Artificial
+
+- Azure OpenAI
+- GPT
+- Prompt Engineering
+
+## Contenedores
+
 - Docker
 - Docker Compose
 
-### Próximamente
+## Cloud
 
-- GitHub Actions (CI/CD)
+- Azure Container Registry (ACR)
 - Azure Container Apps
-- Azure Monitor
-- Application Insights
+
+## DevOps
+
+- GitHub
+- GitHub Actions
 
 ---
 
-# 📌 Características
+# ✨ Características
 
 - Análisis automático de sentimiento.
 - Clasificación inteligente de tickets.
 - Priorización basada en reglas de negocio.
 - Asignación automática del equipo responsable.
-- Generación de respuestas profesionales mediante IA.
+- Generación de respuestas utilizando Azure OpenAI.
 - API REST documentada con Swagger.
 - Contenedorización completa con Docker.
-- Preparado para despliegue en Azure.
+- Despliegue automático mediante GitHub Actions.
+- Aplicación pública ejecutándose en Azure Container Apps.
 
 ---
 
@@ -67,89 +104,65 @@ Respuesta JSON
 ```text
 AI-006-Smart-Ticket-Router
 │
-├── app/
-│   ├── api/
+├── backend/
 │   ├── models/
 │   ├── services/
-│   ├── prompts/
-│   ├── utils/
-│   └── main.py
+│   ├── main.py
 │
-├── tests/
 ├── Dockerfile
 ├── docker-compose.yml
 ├── requirements.txt
-├── .env.example
-└── README.md
+├── README.md
+└── .gitignore
 ```
 
 ---
 
 # 🔗 Enlaces
 
-**Repositorio**
+## Repositorio
 
-```
-https://github.com/TU_USUARIO/AI-006-Smart-Ticket-Router
-```
+https://github.com/Jorgemen18/AI-006-Smart-Ticket-Router
 
-**Producción**
+## API Pública
 
-```
-Próximamente
-```
+https://aca-smart-ticket-router.lemontree-8658bace.southcentralus.azurecontainerapps.io
 
-**Swagger**
+## Swagger
 
-```
-http://localhost:8000/docs
-```
-
-**OpenAPI**
-
-```
-http://localhost:8000/openapi.json
-```
-
-**Métricas**
-
-```
-http://localhost:8000/api/v1/metrics
-```
+https://aca-smart-ticket-router.lemontree-8658bace.southcentralus.azurecontainerapps.io/docs
 
 ---
 
-# 🐳 Ejecución Local con Docker
+# 🐳 Ejecución Local
 
-Este proyecto está diseñado siguiendo la filosofía **Docker First**, por lo que únicamente necesitas tener instalado Docker Desktop.
-
-## 1. Clonar el repositorio
+## Clonar el repositorio
 
 ```bash
-git clone https://github.com/TU_USUARIO/AI-006-Smart-Ticket-Router.git
+git clone https://github.com/Jorgemen18/AI-006-Smart-Ticket-Router.git
 
 cd AI-006-Smart-Ticket-Router
 ```
 
 ---
 
-## 2. Configurar variables de entorno
+## Variables de entorno
 
-Crear un archivo llamado `.env` en la raíz del proyecto.
+Crear un archivo `.env`
 
 ```env
-AZURE_OPENAI_ENDPOINT=tu_endpoint
+AZURE_OPENAI_ENDPOINT=
 
-AZURE_OPENAI_API_KEY=tu_api_key
+AZURE_OPENAI_API_KEY=
 
-AZURE_OPENAI_DEPLOYMENT_NAME=tu_modelo
+AZURE_OPENAI_DEPLOYMENT_NAME=
 
 AZURE_OPENAI_API_VERSION=2024-02-15-preview
 ```
 
 ---
 
-## 3. Construir la imagen
+## Construir el contenedor
 
 ```bash
 docker compose build
@@ -157,31 +170,29 @@ docker compose build
 
 ---
 
-## 4. Levantar los contenedores
+## Ejecutar
 
 ```bash
 docker compose up
 ```
 
-o bien
-
-```bash
-docker compose up --build
-```
-
-La aplicación estará disponible en:
+La API quedará disponible en
 
 ```
 http://localhost:8000
 ```
 
+Swagger
+
+```
+http://localhost:8000/docs
+```
+
 ---
 
-# 📡 API Endpoints
+# 📡 Endpoints
 
-## Analizar Ticket
-
-**POST**
+## POST
 
 ```
 /api/v1/tickets/analyze
@@ -191,8 +202,8 @@ http://localhost:8000
 
 ```json
 {
-  "text": "¡Es el colmo! Me volvieron a cobrar doble la mensualidad en mi tarjeta. Si no me regresan mi dinero hoy mismo, voy a llamar a mi abogado.",
-  "language": "es"
+    "text":"Mi laptop se quedó sin batería y el cargador está roto.",
+    "language":"es"
 }
 ```
 
@@ -200,35 +211,12 @@ http://localhost:8000
 
 ```json
 {
-  "category": "Facturación",
-  "priority": "Crítica",
-  "sentiment": "Muy Negativo",
-  "recommended_team": "Retención y Finanzas",
-  "suggested_response": "Lamentamos profundamente el error en su facturación. Hemos escalado su caso con prioridad crítica para procesar su reembolso inmediato.",
-  "estimated_sla": "2 horas"
-}
-```
-
----
-
-## Dashboard de Métricas
-
-**GET**
-
-```
-/api/v1/metrics
-```
-
-### Response
-
-```json
-{
-  "tickets_processed": 142,
-  "high_priority": 23,
-  "billing": 45,
-  "technical": 80,
-  "sales": 12,
-  "other": 5
+    "category":"Soporte Técnico",
+    "priority":"Media",
+    "sentiment":"Negativo",
+    "recommended_team":"Equipo de Soporte Técnico",
+    "suggested_response":"...",
+    "estimated_sla":"6 horas"
 }
 ```
 
@@ -238,41 +226,89 @@ http://localhost:8000
 
 1. El cliente envía un ticket.
 2. FastAPI recibe la solicitud.
-3. Pydantic valida la información.
+3. Pydantic valida los datos.
 4. Azure OpenAI analiza el contenido.
-5. Se identifica el sentimiento.
-6. Se clasifica la categoría.
-7. Se calcula la prioridad.
-8. Se determina el equipo responsable.
-9. Se genera una respuesta profesional.
-10. La API devuelve un JSON estructurado.
+5. Se determina el sentimiento.
+6. Se identifica la categoría.
+7. Se aplican reglas de negocio.
+8. Se calcula la prioridad.
+9. Se asigna el equipo responsable.
+10. Se genera la respuesta estructurada.
 
 ---
 
-# 📸 Capturas de Pantalla
+# ☁️ Despliegue en Microsoft Azure
 
-Pendiente de agregar:
+## Azure Container Registry (ACR)
 
-- Swagger UI
-- Docker Desktop
-- Logs del contenedor
-- Ejemplos de peticiones
-- Dashboard de métricas
+La imagen Docker se almacena en un registro privado de Azure para administrar las versiones de la aplicación.
+
+📸 **Agregar captura del Azure Container Registry.**
+
+---
+
+## GitHub Actions
+
+Cada cambio enviado a la rama **main** ejecuta automáticamente un pipeline que:
+
+- Construye la imagen Docker.
+- Publica la imagen en Azure Container Registry.
+- Actualiza Azure Container Apps.
+
+📸 **Agregar captura del workflow exitoso en GitHub Actions.**
+
+---
+
+## Azure Container Apps
+
+La aplicación se ejecuta como un servicio Serverless utilizando Azure Container Apps.
+
+Características del despliegue:
+
+- Imagen almacenada en Azure Container Registry.
+- Variables de entorno administradas desde Azure.
+- Integración con Azure OpenAI.
+- Exposición pública mediante HTTPS.
+- Escalado administrado por Azure.
+
+📸 **Agregar captura del recurso Azure Container Apps.**
+
+---
+
+# 🎉 Resultado
+
+La aplicación se encuentra completamente desplegada en Microsoft Azure y puede probarse desde cualquier navegador mediante Swagger.
+
+🌐 **Swagger**
+
+https://aca-smart-ticket-router.lemontree-8658bace.southcentralus.azurecontainerapps.io/docs
+
+📸 **Agregar captura ejecutando un ticket exitosamente desde Swagger.**
+
+---
+
+# 📸 Capturas recomendadas
+
+- Arquitectura del proyecto.
+- Swagger UI.
+- Docker Desktop.
+- Azure Container Registry.
+- Azure Container Apps.
+- GitHub Actions.
+- Respuesta exitosa de la API.
 
 ---
 
 # 📅 Roadmap
 
-- [x] Configuración inicial del proyecto.
-- [x] API con FastAPI.
-- [x] Integración con Azure OpenAI.
-- [x] Dockerización del proyecto.
-- [ ] Pruebas unitarias.
-- [ ] GitHub Actions.
-- [ ] Azure Container Apps.
-- [ ] Azure Monitor.
-- [ ] Application Insights.
-- [ ] Autenticación con Azure Entra ID.
+- ✅ API REST con FastAPI.
+- ✅ Integración con Azure OpenAI.
+- ✅ Docker.
+- ✅ Docker Compose.
+- ✅ Azure Container Registry.
+- ✅ GitHub Actions.
+- ✅ Azure Container Apps.
+
 
 ---
 
@@ -280,4 +316,6 @@ Pendiente de agregar:
 
 **Jorge**
 
-Proyecto desarrollado como parte de mi portafolio de Ingeniería en Inteligencia Artificial y preparación para la certificación **Microsoft Azure AI Engineer Associate (AI-103)**.
+Proyecto desarrollado como parte de mi portafolio de **Azure AI** y preparación para la certificación **Microsoft Azure AI Engineer Associate (AI-103)**.
+
+Si este proyecto te resulta interesante, cualquier comentario o sugerencia es bienvenido.
