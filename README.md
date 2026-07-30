@@ -256,7 +256,8 @@ Cada cambio enviado a la rama **main** ejecuta automáticamente un pipeline que:
 - Publica la imagen en Azure Container Registry.
 - Actualiza Azure Container Apps.
 
-📸 **Agregar captura del workflow exitoso en GitHub Actions.**
+📸 <img width="910" height="490" alt="Captura de pantalla 2026-07-30 155703" src="https://github.com/user-attachments/assets/2cf57e89-1d9c-494a-b818-95d8cbcd4a8d" />
+
 
 ---
 
@@ -272,7 +273,8 @@ Características del despliegue:
 - Exposición pública mediante HTTPS.
 - Escalado administrado por Azure.
 
-📸 **Agregar captura del recurso Azure Container Apps.**
+📸 <img width="937" height="679" alt="Captura de pantalla 2026-07-30 162452" src="https://github.com/user-attachments/assets/3de61083-4c42-40fe-8923-0090682b59c6" />
+
 
 ---
 
@@ -284,11 +286,12 @@ La aplicación se encuentra completamente desplegada en Microsoft Azure y puede 
 
 https://aca-smart-ticket-router.lemontree-8658bace.southcentralus.azurecontainerapps.io/docs
 
-📸 **Agregar captura ejecutando un ticket exitosamente desde Swagger.**
+📸 <img width="925" height="989" alt="Captura de pantalla 2026-07-30 162626" src="https://github.com/user-attachments/assets/e26dea1a-b661-4943-b016-0c80a0ecad9f" />
 
 ---
 
-# 📸 Capturas recomendadas
+# 📸 <img width="903" height="933" alt="Captura de pantalla 2026-07-30 162651" src="https://github.com/user-attachments/assets/d2c40485-df74-42b9-8e86-9f57a601543d" />
+
 
 - Arquitectura del proyecto.
 - Swagger UI.
