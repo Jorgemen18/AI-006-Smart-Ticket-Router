@@ -243,7 +243,8 @@ http://localhost:8000/docs
 
 La imagen Docker se almacena en un registro privado de Azure para administrar las versiones de la aplicación.
 
-📸 **Agregar captura del Azure Container Registry.**
+📸<img width="789" height="428" alt="Captura de pantalla 2026-07-30 155214" src="https://github.com/user-attachments/assets/386f5796-f5f3-4936-a992-cd877a34587c" />
+
 
 ---
 
